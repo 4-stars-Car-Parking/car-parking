@@ -3,22 +3,22 @@
 const db =require("../database")
 
 let creatdefult = (cb) => {
-  db.parkdata.create({numpark: 1,
-    status: true,
-    numpark: 2,
-    status: true,
-    numpark: 3,
-    status: true,
-    numpark: 4,
-    status: true,
-    numpark: 5,
-    status: true,
-    numpark: 6,
-    status: true,
-    numpark: 7,
-    status: true,
-    numpark: 8,
-    status: true,},
+  db.parkdata.create([{numpark: 1,
+    status: false},
+   { numpark: 2,
+    status: true},
+    {numpark: 3,
+    status: false},
+    {numpark: 4,
+    status: true},
+    {numpark: 5,
+    status: false},
+    {numpark: 6,
+    status: true},
+    {numpark: 7,
+    status: true},
+    {numpark: 8,
+    status: true}],
      (err, data) => {
     if (err) {
       cb(err)
@@ -32,7 +32,7 @@ let creatdefult = (cb) => {
 
     ///////roaa
     let getfalse = (cb) => {
-      db.userdata.find({status:false}, (err, data) => {
+      db.parkdata.find({status: false}, (err, data) => {
         if (err) {
           cb(err);
         } else {
@@ -46,7 +46,7 @@ let creatdefult = (cb) => {
 
 
    let  updatepark = (cb) => {
-      db.userdata.updateOne( {} ,  { $set: { status: true }}, (err, data) => {
+      db.parkdata.updateOne( {} ,  { $set: { status: true }}, (err, data) => {
         if (err) {
           cb(err);
         } else {

@@ -39,7 +39,9 @@ router.put('/:name/:password/:value', (req, res) => {
 router.get('/all', (req, res) => {
 
   /////hala
- 
+  mongo.getallcostmer((result) => {
+    res.json(result);
+  })
 });
 
 
@@ -57,7 +59,7 @@ router.get('/:name/:password', (req, res) => {
 
   console.log("login")
 
-  mongo.getlogin((result) => {``
+  mongo.getlogin((result) => {
     res.json(result);
   },name,password)
 });
